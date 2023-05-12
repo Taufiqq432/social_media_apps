@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:social_media_app/view_services/services/splash_services.dart';
 
 import '../../component/fonts.dart';
 import 'package:social_media_app/component/color.dart.';
@@ -12,6 +13,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  SplashServices services =SplashServices();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    services.isLogin(context);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
