@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_media_app/ui/login/login_screen.dart';
+import 'package:social_media_app/ui/signup/signin_screen.dart';
 import 'package:social_media_app/utils/routes/routes_name.dart';
 
 import '../../ui/splash/splash_screen.dart';
@@ -12,6 +13,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case RouteName.loginScreen:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case RouteName.singupScreen:
+        return MaterialPageRoute(builder: (_)=>const SignupScreen() );
 
       default:
         return MaterialPageRoute(builder: (_) {
