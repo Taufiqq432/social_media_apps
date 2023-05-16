@@ -44,12 +44,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height:height*.01 ,),
                 Text('Enter your email address\n connect to your account',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.subtitle1,),
+                  style: Theme.of(context).textTheme.headline6,),
                 SizedBox(height:height*.01 ,),
                 Form(
                   key: formkey,
                     child: Padding(
-                      padding:  EdgeInsets.only(top: height*.06,bottom: height*0.6),
+                      padding:  EdgeInsets.only(top: height*.06,bottom: height*0.02),
                       child: Column(
                   children: [
                       InputTextField(
@@ -59,20 +59,23 @@ class _LoginScreenState extends State<LoginScreen> {
                           keyBordType: TextInputType.emailAddress,
                           obsecureText: false,
 
-                          hint: 'Email',
+                          labelText: 'Email',
                           validator: (value){
                             return value.isEmpty?'enter email':null;
                           }
                       ),
+                    SizedBox(height:height*.01 ,),
                       InputTextField(mycontroller:passwordcontroller
                           , focusnode:passwordfocusnode ,
                           onfieldsubmited: (value){},
                           keyBordType: TextInputType.text,
-                          obsecureText:true, hint: 'Password',
+                          obsecureText:true, labelText: 'Password',
                           validator: (value){
                         return value.isEmpty?'enter password':null;
 
-                          })
+                          }),
+
+
                   ],
                 ),
                     )),
@@ -82,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: Theme.of(context).textTheme.headline2!.copyWith(fontSize: 15,decoration: TextDecoration.underline),),
                 ),
 
-                const SizedBox(height: 40),
+                SizedBox(height: height*0.01,),
                 RoundButton(
                   title: 'Login',
                   color: AppColors.secondaryColor,
@@ -95,12 +98,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   child: Text.rich(
                     TextSpan(
-                      text: "don't have an account",
-                      style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: 15),
+                      text: "Don't have an account? ",
+                      style: Theme.of(context).textTheme.headline6!.copyWith(fontSize: 16),
                     children: [
                       TextSpan(
                         text: 'Sign Up',
-                          style: Theme.of(context).textTheme.headline2!.copyWith(fontSize: 15,decoration: TextDecoration.underline)
+                          style: Theme.of(context).textTheme.headline2!.copyWith(fontSize: 16,decoration: TextDecoration.underline)
                       )
                     ]
                     )

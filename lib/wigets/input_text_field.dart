@@ -18,7 +18,7 @@ class InputTextField extends StatelessWidget {
       required this.onfieldsubmited,
       required this.keyBordType,
       required this.obsecureText,
-      required this.hint,
+      this.hint='',
       required this.validator,
       this.enable = true,
       this.autoFocus = false,
@@ -31,6 +31,8 @@ class InputTextField extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8),
       child: TextFormField(
         cursorColor: AppColors.dialogAlertBackgroundColor,
+        cursorHeight: 20,
+
         controller: mycontroller,
         focusNode: focusnode,
         onFieldSubmitted: onfieldsubmited,
@@ -41,6 +43,10 @@ class InputTextField extends StatelessWidget {
         decoration: InputDecoration(
             hintText: hint,
             labelText: labelText,
+            labelStyle:Theme.of(context)
+                .textTheme
+                .bodyText2!
+                .copyWith(height:0,color: AppColors.primaryTextTextColor.withOpacity(0.8)),
             enabled: enable,
             contentPadding: EdgeInsets.all(15),
             hintStyle: Theme.of(context)
