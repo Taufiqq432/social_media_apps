@@ -4,5 +4,6 @@ class RouteName {
   static const String loginScreen = 'login_view';
   static const String singupScreen='sign_view';
   static const String dashboardscreen='dash_view';
+  static const String forgotpasswordscreen='recovering ';
 
 }

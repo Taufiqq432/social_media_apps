@@ -1,32 +1,31 @@
+
+import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:social_media_app/component/color.dart.';
 import 'package:social_media_app/utils/routes/routes_name.dart';
+import 'package:social_media_app/view_services/firebase_services/forgot_controller.dart';
 import 'package:social_media_app/view_services/firebase_services/login_controller.dart';
 import 'package:social_media_app/wigets/input_text_field.dart';
 import 'package:social_media_app/wigets/round_button.dart';
-
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final formkey = GlobalKey<FormState>();
   final emailcontroller = TextEditingController();
-  final passwordcontroller = TextEditingController();
-  final passwordfocusnode = FocusNode();
   final emailfocusnode = FocusNode();
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     emailcontroller.dispose();
-    passwordcontroller.dispose();
     emailfocusnode.dispose();
-    passwordfocusnode.dispose();
+
   }
 
   @override
@@ -45,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: height * .01,
                 ),
                 Text(
-                  'welcome to app',
+                  'Welcome to recover password',
                   style: Theme.of(context).textTheme.headline3,
                 ),
                 SizedBox(
@@ -79,47 +78,25 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(
                             height: height * .01,
                           ),
-                          InputTextField(
-                              mycontroller: passwordcontroller,
-                              focusnode: passwordfocusnode,
-                              onfieldsubmited: (value) {},
-                              keyBordType: TextInputType.text,
-                              obsecureText: true,
-                              labelText: 'Password',
-                              validator: (value) {
-                                return value.isEmpty ? 'enter password' : null;
-                              }),
                         ],
                       ),
                     )),
-                GestureDetector(
-                  onTap: (){
-                    Navigator.pushNamed(context, RouteName.forgotpasswordscreen);
-                  },
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      'Forgot Password',
-                      style: Theme.of(context).textTheme.headline2!.copyWith(
-                          fontSize: 15, decoration: TextDecoration.underline),
-                    ),
-                  ),
-                ),
+
                 SizedBox(
                   height: height * 0.01,
                 ),
                 ChangeNotifierProvider(
-                  create: (_) => LoginController(),
-                  child: Consumer<LoginController>(
+                  create: (_) =>ForgotpasswordController(),
+                  child: Consumer<ForgotpasswordController>(
                     builder: (context, provider, child) {
                       return RoundButton(
                         loading: provider.loading,
-                        title: 'Login',
+                        title: 'Reset',
                         color: AppColors.secondaryColor,
                         onPress: () {
                           if (formkey.currentState!.validate()) {
-                            provider.login(context, emailcontroller.text,
-                                passwordcontroller.text);
+                            provider.forgotpassword(context, emailcontroller.text,
+                                );
                           }
                         },
                       );
@@ -129,27 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: height * 0.01,
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, RouteName.singupScreen);
-                  },
-                  child: Text.rich(TextSpan(
-                      text: "Don't have an account? ",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6!
-                          .copyWith(fontSize: 16),
-                      children: [
-                        TextSpan(
-                            text: 'Sign Up',
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline2!
-                                .copyWith(
-                                    fontSize: 16,
-                                    decoration: TextDecoration.underline))
-                      ])),
-                )
+
               ],
             ),
           ),
@@ -158,3 +115,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
