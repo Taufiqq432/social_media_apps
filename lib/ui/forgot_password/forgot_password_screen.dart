@@ -1,11 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 import 'package:social_media_app/component/color.dart.';
-import 'package:social_media_app/utils/routes/routes_name.dart';
 import 'package:social_media_app/view_services/firebase_services/forgot_controller.dart';
-import 'package:social_media_app/view_services/firebase_services/login_controller.dart';
 import 'package:social_media_app/wigets/input_text_field.dart';
 import 'package:social_media_app/wigets/round_button.dart';
 class ForgotPasswordScreen extends StatefulWidget {
@@ -45,7 +43,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 ),
                 Text(
                   'Welcome to recover password',
-                  style: Theme.of(context).textTheme.headline3,
+                  style: Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 26),
                 ),
                 SizedBox(
                   height: height * .01,
